@@ -1,2 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 @import "tailwindcss";
 
+
+:root {
+  --colorPrimari: #121212;
+
+  --colorCard: #171717;
+  --colorBorder: #212121;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Space Grotesk", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+
+::-webkit-scrollbar {
+  width: 4px; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 4px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 2px;
+}
