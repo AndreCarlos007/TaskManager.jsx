@@ -12,34 +12,26 @@ export default function LoginForm() {
     e.preventDefault();
     try {
       const response = await loginUser(email, password);
-      console.log("Token JWT:", response.token);
       localStorage.setItem("token", response.token);
-      router.push("/dashboard"); // Corrigido o caminho relativo
+      router.push("/dashboard");
     } catch (err) {
       alert(err.message);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <form 
-        onSubmit={handleSubmit} 
-        className="w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-sm p-8 space-y-6"
-      >
-        <div className="text-center">
-          <h2 className="text-3xl font-semibold text-gray-900">Bem Vindo de Volta!</h2>
-          <p className="text-sm text-gray-500">Por favor, entre com suas credenciais para entrar</p>
-        </div>
+    <div className="h-screen w-screen bg-[#121212] flex flex-col items-center justify-center px-4">
+        <h1 className="text-white text-3xl font-semibold text-center mb-6">Task Manager</h1>
+      <div className="bg-[#171717] p-8 rounded-2xl shadow-lg w-full max-w-sm">
+        
 
-        <div className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
+            <label className="text-sm text-[#737373] block mb-1">EMAIL ADDRESS</label>
             <input
-              id="email"
               type="email"
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition"
+              placeholder="carlos@example.com"
+              className="w-full px-4 py-3 rounded-lg bg-[#262626] text-white placeholder-[#737373] focus:outline-none focus:ring-2 focus:ring-white"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -47,27 +39,23 @@ export default function LoginForm() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
+            <label className="text-sm text-[#737373] block mb-1">PASSWORD</label>
             <input
-              id="password"
               type="password"
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition"
+              placeholder="••••••••"
+              className="w-full px-4 py-3 rounded-lg bg-[#262626] text-white placeholder-[#737373] focus:outline-none focus:ring-2 focus:ring-white"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
-        </div>
 
-        <button
-          type="submit"
-          className="w-full bg-black text-white py-2 rounded-xl font-semibold hover:bg-gray-900 transition"
-        >
-          Login
-        </button>
-      </form>
+          <button type="submit" className="w-full py-3 bg-white text-[#212121] font-semibold rounded-full hover:bg-gray-200 transition">
+            LOG IN
+          </button>
+
+        </form>
+      </div>
     </div>
   );
 }
