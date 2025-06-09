@@ -1,6 +1,6 @@
 'use client';
 import { useState } from "react";
-import { loginUser } from "../../app/lib/api";
+import { loginUser } from "../../lib/api";
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
@@ -12,7 +12,11 @@ export default function LoginForm() {
     e.preventDefault();
     try {
       const response = await loginUser(email, password);
-      localStorage.setItem("token", response.token);
+      const token = response.token;
+
+      
+      document.cookie = `token=${token}; path=/; max-age=86400; SameSite=Lax`;
+
       router.push("/dashboard");
     } catch (err) {
       alert(err.message);
@@ -21,10 +25,8 @@ export default function LoginForm() {
 
   return (
     <div className="h-screen w-screen bg-[#121212] flex flex-col items-center justify-center px-4">
-        <h1 className="text-white text-3xl font-semibold text-center mb-6">Task Manager</h1>
+      <h1 className="text-white text-3xl font-semibold text-center mb-6">Task Manager</h1>
       <div className="bg-[#171717] p-8 rounded-2xl shadow-lg w-full max-w-sm">
-        
-
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="text-sm text-[#737373] block mb-1">EMAIL ADDRESS</label>
@@ -53,7 +55,6 @@ export default function LoginForm() {
           <button type="submit" className="w-full py-3 bg-white text-[#212121] font-semibold rounded-full hover:bg-gray-200 transition">
             LOG IN
           </button>
-
         </form>
       </div>
     </div>

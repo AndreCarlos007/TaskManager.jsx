@@ -1,6 +1,6 @@
 'use client';
 import { useState } from "react";
-import { registerUser } from "../../app/lib/api";
+import { registerUser } from "../../lib/api";
 import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
@@ -22,9 +22,9 @@ export default function RegisterForm() {
 
   return (
     <div className="bg-[#121212] flex flex-col items-center justify-center px-4 w-full h-screen">
-       <h1 className="text-white text-3xl font-extrabold text-center mb-6">Task Manager</h1>
+      <h1 className="text-white text-3xl font-extrabold text-center mb-6">Task Manager</h1>
       <div className="bg-[#171717] p-8 rounded-2xl shadow-lg w-full max-w-sm">
-       
+
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="text-sm text-[#737373] block mb-1">FULL NAME</label>
