@@ -1,12 +1,30 @@
 "use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import { fetchClientUser } from "../lib/api";
 
 
 const Sidebar = () => {
   const pathname = usePathname();  
   const isActive = (path) => pathname === path;
+
+   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const loadUser = async () => {
+      try {
+        const userData = await fetchClientUser();
+        setUser(userData);
+      } catch (err) {
+        console.error("Erro ao buscar usuário:", err.message);
+      }
+    };
+
+    loadUser();
+  }, []);
 
 
   return (
@@ -33,9 +51,9 @@ const Sidebar = () => {
               
               <div className="flex flex-col">
                 <p className="font-semibold whitespace-nowrap">
-                  André Carlos
+                  {user?.name || "Carregando..."}
                 </p>
-                {/* adicionar função de pegar nome de login */}
+                
               </div>
               <div>
                 
