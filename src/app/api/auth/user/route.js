@@ -10,6 +10,7 @@ export async function GET() {
     if (!token) {
       return new Response(JSON.stringify({ message: "Não autenticado" }), {
         status: 401,
+        headers: { "Content-Type": "application/json" },
       });
     }
 

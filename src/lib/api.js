@@ -50,17 +50,27 @@ export async function getUserProfile(token) {
   return await res.json();
 }
 
-// ✅ Obter perfil no CLIENT via rota interna que já acessa os cookies
 export async function fetchClientUser() {
   const res = await fetch("/api/auth/user", {
     method: "GET",
-    credentials: "include", // garante envio dos cookies
+    credentials: "include",
   });
 
+  const text = await res.text();
+
   if (!res.ok) {
-    const error = await res.json();
-    throw new Error(error.message || "Erro ao obter dados do usuário");
+    try {
+      const error = JSON.parse(text);
+      throw new Error(error.message || "Erro ao obter dados do usuário");
+    } catch {
+      throw new Error("Erro desconhecido ao obter dados do usuário");
+    }
   }
 
-  return await res.json();
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new Error("Resposta do servidor malformada");
+  }
 }
+
