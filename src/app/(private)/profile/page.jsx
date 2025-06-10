@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { fetchClientUser } from "../../../lib/api"; // ajuste o path se necessário
+import { fetchClientUser } from "../../../lib/api"; 
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -50,6 +50,10 @@ const ProfilePage = () => {
                   </div>
                 </div>
               </span>
+
+              <div>
+              <h1 className="text-2xl font-extrabold">Profile</h1>
+            </div>
 
               {/* Seção de Perfil */}
               <div className="relative flex flex-col md:flex-row items-center gap-6 rounded-md p-6 w-full z-10 bg-[#171717] border border-[#212121] min-h-[200px]">
