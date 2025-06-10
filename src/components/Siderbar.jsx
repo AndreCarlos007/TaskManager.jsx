@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { fetchClientUser } from "../lib/api";
+import LogoutButton from "./auth/LogoutButton";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -34,93 +35,104 @@ const Sidebar = () => {
       >
         <div className="absolute inset-px z-10 rounded-md bg-[#171717] overflow-y-hidden transition-colors"></div>
         <div className="relative z-30 w-full">
-          <div className="flex flex-col overflow-y-auto h-screen pb-16">
-            <div className="w-full flex gap-4 items-center">
-              <Image
-                className="rounded-md"
-                src="/image.png"
-                alt="Minha foto de perfil"
-                width={40}
-                height={40}
-                loading="lazy"
-              />
+          <div className="flex flex-col overflow-y-auto h-screen justify-between pb-16">
+            <div className="flex flex-col   ">
+              <div className="w-full flex gap-4 items-center ">
+                <Image
+                  className="rounded-md"
+                  src="/image.png"
+                  alt="Minha foto de perfil"
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                />
 
-              <div className="flex flex-col">
-                <p className="font-semibold whitespace-nowrap">
-                  {user?.name || "Carregando..."}
-                </p>
+                <div className="flex flex-col">
+                  <p className="font-semibold whitespace-nowrap">
+                    {user?.name || "Carregando..."}
+                  </p>
+                </div>
+                <div></div>
               </div>
-              <div></div>
-            </div>
 
-            <div className="flex flex-col gap-2 mt-4 ">
-              <Link href="/dashboard" passHref>
-                <div
-                  className={`flex items-center p-2 gap-2 rounded-md hover:opacity-100 hover:bg-[#121212] transition-all duration-300 delay-75 hover:border-[#212121]
+              <div className="flex flex-col gap-2 mt-4">
+                <Link href="/dashboard" passHref>
+                  <div
+                    className={`flex items-center p-2 gap-2 rounded-md hover:opacity-100 hover:bg-[#121212] transition-all duration-300 delay-75 hover:border-[#212121]
                     ${
                       isActive("/dashboard")
                         ? "bg-[#121212] opacity-100 border border-[#212121]"
                         : "opacity-40 border border-transparent"
                     }`}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
                   >
-                    <path
-                      fill="currentColor"
-                      d="M2 2h5v11H2zm6 0h5v5H8zm6 0h4v16h-4zM8 8h5v5H8zm-6 6h11v4H2z"
-                    />
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M2 2h5v11H2zm6 0h5v5H8zm6 0h4v16h-4zM8 8h5v5H8zm-6 6h11v4H2z"
+                      />
+                    </svg>
 
-                  <p className="text-sm">DASHBOARD</p>
-                </div>
-              </Link>
+                    <p className="text-sm">DASHBOARD</p>
+                  </div>
+                </Link>
 
-              <Link href="/dashboard/projects" passHref>
-                <div
-                  className={`flex items-center p-2 gap-2 rounded-md hover:opacity-100 hover:bg-[#121212] transition-all duration-300 delay-75 hover:border-[#212121]
+                <Link href="/dashboard/projects" passHref>
+                  <div
+                    className={`flex items-center p-2 gap-2 rounded-md hover:opacity-100 hover:bg-[#121212] transition-all duration-300 delay-75 hover:border-[#212121]
                     ${
                       isActive("/dashboard/projects")
                         ? "bg-[#121212] opacity-100 border border-[#212121]"
                         : "opacity-40 border border-transparent"
                     }`}
-                >
-                  <svg
-                    stroke="currentColor"
-                    fill="currentColor"
-                    strokeWidth="0"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                    height="16"
-                    width="16"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                  </svg>
+                    <svg
+                      stroke="currentColor"
+                      fill="currentColor"
+                      strokeWidth="0"
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                      height="16"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                    </svg>
 
-                  <p className="text-sm">PROJECTS</p>
-                </div>
-              </Link>
+                    <p className="text-sm">PROJECTS</p>
+                  </div>
+                </Link>
 
-              <Link href="/profile" passHref>
-                <div
-                  className={`flex items-center p-2 gap-2 rounded-md hover:opacity-100 hover:bg-[#121212] transition-all duration-300 delay-75 hover:border-[#212121]
+                <Link href="/profile" passHref>
+                  <div
+                    className={`flex items-center p-2 gap-2 rounded-md hover:opacity-100 hover:bg-[#121212] transition-all duration-300 delay-75 hover:border-[#212121]
                   ${
                     isActive("/profile")
                       ? "bg-[#121212] opacity-100 border border-[#212121]"
                       : "opacity-40 border border-transparent"
                   }`}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"/></svg>
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"
+                      />
+                    </svg>
 
-                  <p className="text-sm">PROFILE</p>
-                </div>
-              </Link>
+                    <p className="text-sm">PROFILE</p>
+                  </div>
+                </Link>
 
-              {/* <Link href="/about-me" passHref>
+                {/* <Link href="/about-me" passHref>
                 <div
                   className={`flex items-center p-2 gap-2 rounded-md hover:opacity-100 hover:bg-background transition-all duration-300 delay-75 hover:border-colorBorder
                   ${isActive("/about-me") ? "bg-background opacity-100 border border-[#212121]" : "opacity-40 border border-transparent"}`}
@@ -139,9 +151,12 @@ const Sidebar = () => {
                   <p className="text-sm">USER</p>
                 </div>
               </Link> */}
+              </div>
             </div>
 
-            {/* outro conteudo */}
+            <div className="flex flex-col">
+              <LogoutButton />
+            </div>
           </div>
         </div>
       </div>

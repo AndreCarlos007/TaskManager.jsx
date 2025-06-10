@@ -84,30 +84,44 @@ const ProjectsPage = () => {
                 <h1 className="text-2xl font-extrabold">Projects</h1>
               </div>
 
-              <form
-                onSubmit={handleCreate}
-                className="flex flex-col gap-3 w-full max-w-md mb-10"
-              >
-                <input
-                  type="text"
-                  placeholder="Nome do projeto"
-                  className="p-2 rounded bg-zinc-800 text-white"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <textarea
-                  placeholder="Descrição"
-                  className="p-2 rounded bg-zinc-800 text-white"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-                <button
-                  type="submit"
-                  className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded"
-                >
-                  Criar Projeto
-                </button>
-              </form>
+              <div className="flex flex-col gap-6 mt-4 ">
+                <div className="relative flex size-full rounded-md p-4 w-full z-10">
+                  <div className="absolute inset-px z-10 rounded-md border border-[#212121] bg-[#171717] transition-colors"></div>
+                  <div className="relative z-30 w-[700px]">
+                    <div className="flex flex-col gap-4 h-full">
+                      <div className="flex flex-col gap-1">
+                        <div className=" rounded-lg  ">
+                          <form
+                            onSubmit={handleCreate}
+                            className="flex flex-col gap-3 w-full  mb-10"
+                          >
+                            <input
+                              type="text"
+                              placeholder="Project name"
+                              className="p-2 rounded bg-zinc-800 text-white"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                            />
+                            <textarea
+                              placeholder="Description"
+                              className="p-2 rounded bg-zinc-800 text-white"
+                              value={description}
+                              resize="none"
+                              onChange={(e) => setDescription(e.target.value)}
+                            />
+                            <button
+                              type="submit"
+                              className="bg-[#154c0f] hover:bg-[#26651d] text-[#6e6e6e] hover:text-white cursor-pointer transition-all duration-300 font-semibold py-2 px-4 rounded"
+                            >
+                              Create project
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               {loading ? (
                 <p className="text-white">Carregando projetos...</p>
@@ -116,7 +130,7 @@ const ProjectsPage = () => {
                   {projects.map((project) => (
                     <div
                       key={project.id}
-                      className="bg-zinc-900 border border-zinc-700 p-4 rounded shadow"
+                      className="bg-zinc-900 border border-[#212121] p-4 rounded "
                     >
                       <h2 className="text-xl font-semibold">{project.name}</h2>
                       <p className="text-sm text-zinc-400 mb-2">
@@ -127,7 +141,7 @@ const ProjectsPage = () => {
                           onClick={() => toggleStatus(project)}
                           className={`text-xs px-3 py-1 rounded ${
                             project.status === 1
-                              ? "bg-green-600"
+                              ? "bg-[#154c0f]"
                               : "bg-yellow-500"
                           } text-white`}
                         >
@@ -135,9 +149,19 @@ const ProjectsPage = () => {
                         </button>
                         <button
                           onClick={() => handleDelete(project.id)}
-                          className="text-xs px-3 py-1 rounded bg-red-600 text-white"
+                          className="bg-[#171717] hover:bg-[#121212] p-1 rounded-[10px] border border-[#212121] cursor-pointer text-white"
                         >
-                          Excluir
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6z"
+                            />
+                          </svg>
                         </button>
                       </div>
                     </div>
