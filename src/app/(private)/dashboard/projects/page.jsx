@@ -136,16 +136,13 @@ const ProjectsPage = () => {
                       <p className="text-sm text-zinc-400 mb-2">
                         {project.description}
                       </p>
-                      <div className="flex justify-between mt-4">
+                      <div className="flex justify-end mt-4">
+                        Status = pendente, fazer requisição getById para pegar o status do projeto que retorna
                         <button
-                          onClick={() => toggleStatus(project)}
-                          className={`text-xs px-3 py-1 rounded ${
-                            project.status === 1
-                              ? "bg-[#154c0f]"
-                              : "bg-yellow-500"
-                          } text-white`}
+                          // fazer onclick para fazer a função de editar titulo, descrição e status do projeto
+                          className="bg-[#171717] hover:bg-[#121212] p-1 rounded-[10px] border border-[#212121] cursor-pointer text-white"
                         >
-                          {project.status === 1 ? "Concluído" : "Pendente"}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m13.948 12.533l-2.327-2.352l4.083-4.077l-.36-.36q-.154-.154-.461-.154t-.462.154L9.877 10.29q-.146.146-.335.146t-.334-.146q-.166-.147-.166-.348t.147-.347l4.557-4.557q.485-.485 1.153-.485t1.153.485l.36.36l.827-.828q.242-.242.568-.242t.568.242l1.267 1.268q.243.242.224.53q-.02.287-.262.53zM4.942 20q-.348 0-.577-.23q-.23-.23-.23-.578v-1.098q0-.207.073-.387t.233-.34l6.448-6.453l2.352 2.327l-6.474 6.453q-.16.16-.339.233T6.041 20z"/></svg>
                         </button>
                         <button
                           onClick={() => handleDelete(project.id)}

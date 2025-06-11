@@ -11,7 +11,7 @@ const Title = () => {
                         <div className="flex flex-col gap-4 h-full">
                           <div className="flex flex-col gap-1">
                             <div className=" rounded-lg  ">
-                              <h1 className="text-3xl font-extrabold">TASK MANAGER</h1>
+                              <h1 className="text-3xl font-extrabold">Task Manager</h1>
                             </div>
                           </div>
                         </div>
