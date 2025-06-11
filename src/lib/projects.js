@@ -101,3 +101,24 @@ export async function deleteProject(id) {
 
   return { success: true };
 }
+
+export async function getProjectById(id) {
+  const token = getTokenFromCookie();
+  if (!token) throw new Error("Usuário não autenticado");
+
+  const res = await fetch(`${API_URL}/Project/${id}`, {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+  });
+
+  if (!res.ok) {
+    console.error("Erro ao buscar projeto por ID:", res.status);
+    throw new Error("Erro ao buscar projeto");
+  }
+
+  return await res.json();
+}
+
+
