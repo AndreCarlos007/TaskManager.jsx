@@ -122,9 +122,7 @@ const ProjectsPage = () => {
       {editingProject && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
           <div className="bg-zinc-900 border border-[#212121] p-6 rounded-lg w-full max-w-md">
-            <h2 className="text-xl font-bold mb-4 text-white">
-              Edit Project
-            </h2>
+            <h2 className="text-xl font-bold mb-4 text-white">Edit Project</h2>
             <input
               type="text"
               value={editName}
@@ -207,8 +205,10 @@ const ProjectsPage = () => {
                   {projects.map((project) => (
                     <div
                       key={project.id}
-  onClick={() => router.push(`/dashboard/projects/tasks/${project.id}`)}
-  className="bg-[#171717] border border-[#212121] p-4 rounded cursor-pointer hover:bg-[#1f1f1f] transition"
+                      onClick={() =>
+                        router.push(`/dashboard/projects/tasks/${project.id}`)
+                      }
+                      className="bg-[#171717] border border-[#212121] p-4 rounded cursor-pointer hover:bg-[#1f1f1f] transition"
                     >
                       <h2 className="text-xl font-semibold">{project.name}</h2>
                       <p className="text-sm text-zinc-400">
@@ -219,13 +219,29 @@ const ProjectsPage = () => {
                       </p>
                       <div className="flex justify-end gap-2 mt-4">
                         <button
-                          onClick={() => openEditModal(project.id)}
-                          className="bg-[#171717] hover:bg-[#121212] p-1 rounded-[10px] border border-[#212121] cursor-pointer text-white"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openEditModal(project.id);
+                          }}
+                          className="bg-[#171717]  hover:bg-[#121212] p-1 rounded-[10px] border border-[#212121] cursor-pointer text-white"
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m13.948 12.533l-2.327-2.352l4.083-4.077l-.36-.36q-.154-.154-.461-.154t-.462.154L9.877 10.29q-.146.146-.335.146t-.334-.146q-.166-.147-.166-.348t.147-.347l4.557-4.557q.485-.485 1.153-.485t1.153.485l.36.36l.827-.828q.242-.242.568-.242t.568.242l1.267 1.268q.243.242.224.53q-.02.287-.262.53zM4.942 20q-.348 0-.577-.23q-.23-.23-.23-.578v-1.098q0-.207.073-.387t.233-.34l6.448-6.453l2.352 2.327l-6.474 6.453q-.16.16-.339.233T6.041 20z"/></svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="m13.948 12.533l-2.327-2.352l4.083-4.077l-.36-.36q-.154-.154-.461-.154t-.462.154L9.877 10.29q-.146.146-.335.146t-.334-.146q-.166-.147-.166-.348t.147-.347l4.557-4.557q.485-.485 1.153-.485t1.153.485l.36.36l.827-.828q.242-.242.568-.242t.568.242l1.267 1.268q.243.242.224.53q-.02.287-.262.53zM4.942 20q-.348 0-.577-.23q-.23-.23-.23-.578v-1.098q0-.207.073-.387t.233-.34l6.448-6.453l2.352 2.327l-6.474 6.453q-.16.16-.339.233T6.041 20z"
+                            />
+                          </svg>
                         </button>
                         <button
-                          onClick={() => handleDelete(project.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDelete(project.id);
+                          }}
                           className="bg-[#171717] hover:bg-[#121212] p-1 rounded-[10px] border border-[#212121] cursor-pointer text-white"
                         >
                           <svg
@@ -245,8 +261,6 @@ const ProjectsPage = () => {
                   ))}
                 </div>
               )}
-
-              
             </section>
           </div>
         </main>
