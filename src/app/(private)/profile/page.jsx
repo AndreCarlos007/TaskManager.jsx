@@ -37,7 +37,7 @@ const ProfilePage = () => {
             </div>
 
               {/* Seção de Perfil */}
-              <div className="relative flex flex-col md:flex-row items-center gap-6 rounded-md p-6 w-full z-10 bg-[#171717] border border-[#212121] min-h-[200px]">
+              <div className="relative flex flex-col md:flex-row items-center gap-6 rounded-md p-6 w-[800px] z-10 bg-[#171717] border border-[#212121] min-h-[200px]">
                 {loading ? (
                   <p className="text-white">Carregando dados do usuário...</p>
                 ) : user ? (
