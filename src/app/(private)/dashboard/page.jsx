@@ -28,7 +28,7 @@ const page = () => {
               <span style={{ opacity: 1, transform: "none" }}>
                 
                   <div className="flex flex-col gap-6 mt-6">
-                    <div className="relative group flex size-full rounded-md p-6 w-full z-10 hover:shadow-xl">
+                    <div className="relative group flex size-full rounded-md p-6 w-full z-10 ">
                       <div className="absolute inset-px z-10 rounded-md bg-colorCard  transition-colors"></div>
                       <div className="relative z-30 w-full">
                         <div className="flex flex-col gap-4 h-full">

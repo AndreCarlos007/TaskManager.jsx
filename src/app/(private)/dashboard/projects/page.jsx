@@ -9,6 +9,8 @@ import {
 } from "../../../../lib/projects";
 import Title from "@/components/ui/Title";
 
+import { useRouter } from "next/navigation";
+
 const statusMap = {
   0: "In Progress",
   1: "Completed",
@@ -31,6 +33,8 @@ const ProjectsPage = () => {
   const [editName, setEditName] = useState("");
   const [editDescription, setEditDescription] = useState("");
   const [editStatus, setEditStatus] = useState("");
+
+  const router = useRouter();
 
   useEffect(() => {
     const loadProjects = async () => {
@@ -203,7 +207,8 @@ const ProjectsPage = () => {
                   {projects.map((project) => (
                     <div
                       key={project.id}
-                      className="bg-[#171717] border border-[#212121] p-4 rounded"
+  onClick={() => router.push(`/dashboard/projects/tasks/${project.id}`)}
+  className="bg-[#171717] border border-[#212121] p-4 rounded cursor-pointer hover:bg-[#1f1f1f] transition"
                     >
                       <h2 className="text-xl font-semibold">{project.name}</h2>
                       <p className="text-sm text-zinc-400">
